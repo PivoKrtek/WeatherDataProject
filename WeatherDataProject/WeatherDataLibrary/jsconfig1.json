@@ -1,0 +1,6 @@
+{
+
+  "ConnectionStrings": {
+    "sqlConnection": "Server=(localdb)\\mssqllocaldb;Database=WeatherDataDatabase;Trusted_Connection=True;"
+  }
+}
