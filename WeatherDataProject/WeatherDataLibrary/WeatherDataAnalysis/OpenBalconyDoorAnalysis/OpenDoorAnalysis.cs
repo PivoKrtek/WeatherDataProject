@@ -42,15 +42,6 @@ namespace WeatherDataLibrary
                 TotallyOpenTime += TimeDoorIsOpen[i].OpenTime;
             }
         }
-        public static OpenDoorAnalysis CreateOpenDoorAnalysis(List<WeatherData> dayData)
-        {
-            if (WeatherDatabaseAnalysis.DataExistsBothInAndOutACertainDay(dayData))
-            {
-                OpenDoorAnalysis data = new OpenDoorAnalysis(dayData);
-                return data;
-            }
-            return null;
-        }
         public void FindByAnalysingIndoor(List<WeatherData> dayData)
         {
             var d = dayData

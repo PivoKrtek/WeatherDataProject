@@ -187,7 +187,7 @@ namespace WeatherDataLibrary
                     .AsEnumerable()
                     .GroupBy(d => d.DateAndTime.Date)
                     .Where(d => DataExistsBothInAndOutACertainDay(d.ToList()))
-                    .Select(d => OpenDoorAnalysis.CreateOpenDoorAnalysis(d.ToList()))
+                    .Select(d => new OpenDoorAnalysis(d.ToList()))
                     .OrderByDescending(d => d.TotallyOpenTime)
                     .ToList();
 
@@ -202,9 +202,12 @@ namespace WeatherDataLibrary
                     .AsEnumerable()
                     .Where(d => d.DateAndTime.Date == DateTime.Parse(date).Date)
                     .ToList();
-                                
-                return OpenDoorAnalysis.CreateOpenDoorAnalysis(d);
+                if(DataExistsBothInAndOutACertainDay(d))
+                { return new OpenDoorAnalysis(d); }
+                
             }
+            
+                return null;
         }
         public static List<OpenDoor> ListOfOpenDoorACertainDay(string date)
         {
